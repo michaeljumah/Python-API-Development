@@ -12,10 +12,11 @@ async def root():
 
 @app.get("/getuser")
 async def get_user():
-    return {"message ": "hello"}
+    user = "Denver"
+    return {"message ": f"hello {user}"}
 
 
 @app.post("/creatposts")
 async def create_post(payload: dict= Body(...)):
     print(payload)
-    return {"message": "Succsessfully created"}
+    return {"new_post": f"title {payload['title']} content: {payload['content']}"}
