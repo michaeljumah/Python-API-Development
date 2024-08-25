@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.params import Body
+
 
 app = FastAPI()
 
@@ -14,5 +16,6 @@ async def get_user():
 
 
 @app.post("/creatposts")
-async def create_post():
+async def create_post(payload: dict= Body(...)):
+    print(payload)
     return {"message": "Succsessfully created"}
