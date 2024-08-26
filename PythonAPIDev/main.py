@@ -9,6 +9,7 @@ app = FastAPI()
 class Post(BaseModel):
     title: str
     content: str
+    published: bool = True
         
 
 
@@ -19,11 +20,11 @@ async def root():
 
 @app.get("/getuser")
 async def get_user():
-    user = "Denver"
+    user = input(str("Enter your name: "))
     return {"message ": f"hello {user}"}
 
 
 @app.post("/creatposts")
 async def create_post(new_post: Post):
-    print(new_post)
+    print(new_post.published)
     return {"data": "new_post"}
