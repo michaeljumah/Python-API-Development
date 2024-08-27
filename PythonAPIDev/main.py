@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.params import Body
 from pydantic import BaseModel 
+from typing import Optional
 
 
 app = FastAPI()
@@ -10,6 +11,8 @@ class Post(BaseModel):
     title: str
     content: str
     published: bool = True
+    rating: Optional[int] = None
+    
         
 
 
@@ -26,5 +29,5 @@ async def get_user():
 
 @app.post("/creatposts")
 async def create_post(new_post: Post):
-    print(new_post.published)
+    print(new_post.rating)
     return {"data": "new_post"}
