@@ -28,6 +28,7 @@ async def get_user():
 
 
 @app.post("/creatposts")
-async def create_post(new_post: Post):
-    print(new_post.rating)
+async def create_post(post: Post):
+    print(post)
+    print(post.dict())
     return {"data": "new_post"}
