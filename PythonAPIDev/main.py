@@ -13,7 +13,8 @@ class Post(BaseModel):
     published: bool = True
     rating: Optional[int] = None
     
-        
+    
+    my_posts = [{"title": "title of post 1", "content": "content of post 1", "id": 1}, {"title": "favorite food", "content": "i like pizza", "id": 2}]
 
 
 @app.get("/")
@@ -21,14 +22,14 @@ async def root():
     return {"message": "Jambo Kenya"}
 
 
-@app.get("/getuser")
-async def get_user():
+@app.get("/posts")
+async def get_posts():
     user = input(str("Enter your name: "))
     return {"message ": f"hello {user}"}
 
 
-@app.post("/creatposts")
-async def create_post(post: Post):
+@app.post("/posts")
+async def create_posts(post: Post):
     print(post)
     print(post.dict())
     return {"data": "new_post"}
