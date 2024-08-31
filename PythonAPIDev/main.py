@@ -45,5 +45,5 @@ def create_posts(post: Post):
 
 @app.get("/posts/{id}")
 def get_single_post(id):
-    print(id)
-    return {"post_detail": f"here is post {id}"}
+    post = find_post(int(id))
+    return {"post_detail": post}
