@@ -59,8 +59,13 @@ def create_posts(post: Post):
     return {"data": post_dict}
 
 
-@app.delete("/post/{id}")
-def delete_post():
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_post(id: int):
     #delete post
     #find the index in the array that has the required ID
     #my_posts.pop(index)
+    index = find_index_post(id)
+    
+    my_posts.pop(index)
+    
+    return {'message': "post was succesfully deleted"}
