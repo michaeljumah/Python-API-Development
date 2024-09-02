@@ -23,6 +23,12 @@ def find_post(id):
     for p in my_posts:
         if p["id"] == id:
             return p
+        
+def find_index_post(id):
+    for i, p in enumerate(my_posts):
+        if p['id'] == id:
+            return i
+    
 
 @app.get("/")
 async def root():
@@ -53,3 +59,8 @@ def create_posts(post: Post):
     return {"data": post_dict}
 
 
+@app.delete("/post/{id}")
+def delete_post():
+    #delete post
+    #find the index in the array that has the required ID
+    #my_posts.pop(index)
